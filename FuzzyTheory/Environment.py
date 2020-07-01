@@ -102,7 +102,7 @@ def FuzzyFunc(picked_temperature, picked_humidity):
     ax0.fill_between(rest, rest0, rest_act_low7, alpha=0.5)
     ax0.fill_between(rest, rest0, rest_act_low8, alpha=0.5)
     ax0.fill_between(rest, rest0, rest_act_low9, alpha=0.5)
-    ax0.plot(rest, rest_low, 'b', linewidth=0.5, linestyle='--')
+    ax0.plot(rest, rest_high, 'b', linewidth=0.5, linestyle='--')
 
     ax0.set_title('Output')
 
