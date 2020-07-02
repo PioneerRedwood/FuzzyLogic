@@ -5,14 +5,14 @@ import FuzzyTheory.Environment
 
 
 def main():
-    fig, (graph) = plt.subplots(figsize=(10, 7))
+    fig, (graph) = plt.subplots(figsize=(8, 5))
     _ = (
         pd.read_csv('STCS_190701_190831.csv', sep=',',
                     usecols=['date', 'temp_c', 'humidity'],
                     parse_dates=['date']).set_index('date').plot(ax=graph, picker=True)
     )
     graph.set_xlabel('Date')
-    graph.set_ylabel('Temperature, Humidity')
+    graph.set_ylabel('Temperature')
     graph.set_title('190701 ~ 190831')
     fig.canvas.callbacks.connect('pick_event', onPickItem)
     plt.show()
@@ -30,8 +30,10 @@ def onPickItem(event):
     file = np.loadtxt('STCS_190701_190831_forNP.csv', delimiter=",")
     date_array = np.array(file[:, :1]).reshape(-1)
 
+    print('입력된 날짜: ', date_int)
     select_idx = np.where(date_array == date_int)[0][0]
     selected_tuple = file[select_idx, :]
+    print('온도: ', selected_tuple[1], '도', '습도: ', selected_tuple[3], '%')
     FuzzyTheory.Environment.FuzzyFunc(selected_tuple[1], selected_tuple[3])
 
 
