@@ -7,14 +7,14 @@ import FuzzyTheory.Environment
 def main():
     fig, (graph) = plt.subplots(figsize=(8, 5))
     _ = (
-        pd.read_csv('STCS_190701_190831.csv', sep=',',
-                    usecols=['date', 'temp_c', 'humidity'],
-                    parse_dates=['date']).set_index('date').plot(ax=graph, picker=True)
+        pd.read_csv('STCS_20220609.csv', sep=',',
+                    usecols=['Date', 'Temperature', 'Humidity', 'Heat Index'],
+                    parse_dates=['Date']).set_index('Date').plot(ax=graph, picker=True)
     )
     graph.set_xlabel('Date')
-    graph.set_ylabel('Temperature')
-    graph.set_title('190701 ~ 190831')
-    fig.canvas.callbacks.connect('pick_event', onPickItem)
+    graph.set_ylabel('Units')
+    graph.set_title('2021-07-01 ~ 2021-08-31')
+
     plt.show()
 
 
